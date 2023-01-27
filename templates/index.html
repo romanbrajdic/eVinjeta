@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJS1R8KSQD"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-FJS1R8KSQD');
+        </script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6895462190731164"
+        crossorigin="anonymous"></script>
+        </script>
+
+        <style>
+            body {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 1.6rem;
+                width: 100%;
+                height: 100%;
+                margin: auto;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+            }
+            .input {
+                font-size: 1.6rem;
+                border-radius: 5px;
+                outline: none;
+                padding: 0.4rem;
+                height: 1.6rem;
+                max-width: 90%;
+            }
+            .inner-content {
+                display: flex;
+                flex-direction: column;
+                margin: 10px;
+                padding: 7px;
+                max-width: 800px;
+                width: 95%;
+            }
+            .button {
+                height: 45px;
+                padding: 5px 20px;
+                border: 1px solid;
+                border-radius: 5px;
+                font-size: 1.7rem;
+                margin-top: 15px;
+            }
+            .input:focus {
+                outline: auto;
+                border-color: none;
+            }
+            .info {
+                background-color: lightgoldenrodyellow;
+                border: 1px solid yellow;
+                border-radius: 10px;
+                padding: 20px;
+                margin-bottom: 10px;
+                display: flex;
+                flex-direction: column;
+                font-size: 1.6rem;
+            }
+            .message {
+                padding: 10px 20px;
+                margin-top: 2rem;
+                border: 2px solid rgb(190, 190, 190);
+                border-radius: 5px;
+            }
+            .error {
+                border-color: lightcoral;
+            }
+            .label {
+                margin: 15px 0px ;
+                margin-right: 20px;
+                font-weight: 700;
+            }
+            .title {
+                text-align: center;
+                font-size: 3rem;
+            }
+            .share-icon {
+                border-radius: 5px;
+                height: 2rem;
+                width: 2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .share-icon:hover {
+                cursor: pointer;
+                transform: scale(1.2);
+                transition-duration: 200ms;
+            }
+            .share-icons-container {
+                width: 90%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 40px;
+                padding-left: 5%;
+            }
+            a {
+                text-decoration: none;
+            }
+            .input-container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+
+            @media screen and (max-width: 700px) {
+                .input-container {
+                    flex-direction: column;
+                    justify-content: center;
+                }
+                .label {
+                    margin-right: 0px;
+                }
+            }
+        </style>
+        <title>eVinjeta: Hitro preveri veljavnost evinjete</title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">  
+        <meta name="description" content="Preveri evinjeto. Brez registracije, potrebujemo le registrsko številko. Rezultat takoj. Kdaj kupiti evinjeto?" />
+        <meta name="keywords" content="vinjeta evinjeta veljavnost DARS" />
+        <meta property="og:url" content="http://evinjeta.eu" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="eVinjeta" />
+        <meta property="og:description" content="Preveri evinjeto. Brez registracije, potrebujemo le registrsko številko. Rezultat takoj. Kdaj kupiti evinjeto?" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="inner-content">
+            <h1 class="title">eVINJETA</h1>
+            <div class="info">
+                Preveri veljavnost svoje eVinjete:
+                <span style="font-size: 0.8rem; font-weight: 200;">* Podatke dobimo iz DARS strežnikov. Nismo povezani z DARSom.</span>          
+            </div>
+            <form method="POST">
+                <div class="input-container">
+                    <p class="label">Registrska tablica:</p>
+                    <input class="input" type="text" name="registrska" placeholder="Primer: LJABC23" />
+                </div>
+                <div style="justify-content: center; display: flex;">
+                    <input type="submit" value="Preveri" class="button" />
+                </div>
+            </form>
+            {% if valid_until %}
+                <div class="message">
+                    <p>Vinjeta za registrsko tablico <b>{{ license_plate }}</b> je veljavna vključno do: <b>{{ valid_until }}</b></p>
+                </div>
+            {% elif license_plate %}
+                <div class="message error">
+                    <p>Registrska tablica "<b>{{ license_plate }}</b>" nima veljavne vinjete!</p>
+                </div>
+            {% endif %}
+            <div class="share-icons-container">
+                <div>
+                    <span style="font-size: 1.4rem;">Če vam je spletna stran prišla prav, jo prosim delite z ostalimi:</span>
+                    <div style="display: flex; justify-content: center; margin-top: 10px;">
+                        <a href="https://twitter.com/intent/tweet?text=Enostavno%20preveri%20veljavnost%20svoje%20vinjete%21%0Ahttp%3A%2F%2Fevinjeta.eu%0A%23vinjeta%20%23evinjeta" onclick="window.open(this.href, 'newwindow1', 'width=600,height=600'); return false;">
+                            <div class="share-icon" id="twitter"><i class="fa fa-twitter" style="font-size:32px; color: #1DA1F2"></i></div>
+                        </a>
+                        <div style="width: 10px;"></div>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=http://evinjeta.eu" onclick="window.open(this.href, 'newwindow2', 'width=600,height=600'); return false;">
+                            <div class="share-icon" id="facebook"><i class="fa fa-facebook" style="font-size:32px; color: #4267B2"></i></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div style="align-self: center; margin-top: 20px; max-width: 100%;">
+              <blockquote class="twitter-tweet"><p lang="sl" dir="ltr">[E-VINJETA] 🤔🧾 Ste izgubili potrdilo o nakupu letne e-vinjete in se sprašujete, do kdaj vam velja? 📆 V kratkem videu si oglejte, kako lahko na hiter in enostaven način preverite veljavnost vaše e-vinjete! 👇 <a href="https://t.co/buHbFp9NgV">pic.twitter.com/buHbFp9NgV</a></p>&mdash; DARS (@DARS_SI) <a href="https://twitter.com/DARS_SI/status/1613109303648346114?ref_src=twsrc%5Etfw">January 11, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+        </div>
+    </body>
+</html>
