@@ -26,7 +26,7 @@ def get_headers():
     headers = {h[0]: h[1].strip() for h in hdump}
     return headers
 
-@lru_cache(maxsize=None)
+# @lru_cache(maxsize=None)
 def veljavnost(registrska: str):
     today = datetime.now()
     one_year_after = today + timedelta(days=365)
